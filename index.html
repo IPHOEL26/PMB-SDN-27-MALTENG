@@ -3,29 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aplikasi Pendaftaran Murid Baru SD Negeri 27 Maluku Tengah Tahun Pelajaran 2026-2027" />
-  <title>Pendaftaran Murid Baru SD Negeri 27 Maluku Tengah</title>
+  <meta name="description" content="Aplikasi Pendaftaran Murid Baru dan Murid Mutasi SD Negeri 27 Maluku Tengah" />
+  <title>Pendaftaran Murid Baru dan Mutasi SD Negeri 27 Maluku Tengah</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app-shell">
     <section class="hero-card">
-      <div class="hero-badge">PMB 2026-2027</div>
-      <h1>Pendaftaran Murid Baru</h1>
+      <div class="hero-badge">PMB &amp; MUTASI</div>
+      <h1>PMB &amp; Mutasi</h1>
       <h2>SD Negeri 27 Maluku Tengah</h2>
       <p>
-        Silakan isi data dengan benar sesuai dokumen resmi seperti Kartu Keluarga,
-        Akta Kelahiran, KIP/KKS, dan dokumen pendukung lainnya.
+        Formulir resmi untuk layanan pendaftaran murid baru dan murid mutasi. Pilih jenis pendaftaran, lalu isi data sesuai dokumen keluarga dan dokumen sekolah asal.
       </p>
-      <div class="hero-info">
-        <span>✓ Ramah HP</span>
-        <span>✓ Data langsung masuk Google Sheet</span>
-        <span>✓ Aman untuk verifikasi sekolah</span>
-      </div>
     </section>
 
     <section class="form-card">
-      <div class="progress-wrap">
+      <section id="typeSelector" class="type-selector" aria-label="Pilih jenis pendaftaran">
+        <div class="type-heading">
+          <h2>Jenis Pendaftaran</h2>
+          <p>Pilih salah satu tombol berikut sebelum mengisi formulir.</p>
+        </div>
+
+        <div class="choice-grid">
+          <button type="button" id="chooseNewBtn" class="choice-card">
+            <span class="choice-icon">＋</span>
+            <strong>Murid Baru</strong>
+            <small>Untuk murid yang baru mendaftar sebagai peserta didik baru.</small>
+          </button>
+
+          <button type="button" id="chooseMutasiBtn" class="choice-card accent">
+            <span class="choice-icon">⇄</span>
+            <strong>Murid Mutasi</strong>
+            <small>Untuk murid pindahan/mutasi dari sekolah lain.</small>
+          </button>
+        </div>
+      </section>
+
+      <div id="progressWrap" class="progress-wrap is-hidden">
+        <div class="form-status">
+          <div>
+            <span class="status-label">Jenis Pendaftaran</span>
+            <strong id="selectedTypeLabel">Belum dipilih</strong>
+          </div>
+          <button type="button" id="changeTypeBtn" class="change-type-btn" aria-label="Ganti jenis pendaftaran">
+            <span aria-hidden="true">↻</span> Ganti Pilihan
+          </button>
+        </div>
+
+        <ol id="stepper" class="stepper" aria-label="Progres pengisian formulir"></ol>
+
         <div class="progress-top">
           <span id="stepLabel">Langkah 1 dari 7</span>
           <span id="percentLabel">14%</span>
@@ -33,8 +60,9 @@
         <div class="progress-bar"><div id="progressFill"></div></div>
       </div>
 
-      <form id="pmbForm" method="POST" target="submitFrame" autocomplete="on">
-        <input type="hidden" name="Sumber Form" value="GitHub Pages - PMB SD Negeri 27 Maluku Tengah" />
+      <form id="pmbForm" class="is-hidden" method="POST" target="submitFrame" autocomplete="on" novalidate>
+        <input type="hidden" id="jenisPendaftaran" name="Jenis Pendaftaran" value="Murid Baru" />
+        <input type="hidden" name="Sumber Form" value="GitHub Pages - PMB/Mutasi SD Negeri 27 Maluku Tengah" />
 
         <!-- LANGKAH 1 -->
         <fieldset class="step active" data-title="Data Murid">
@@ -104,6 +132,45 @@
             <div class="field">
               <label for="sekolahAsal">Sekolah Asal / TK / PAUD</label>
               <input id="sekolahAsal" name="Sekolah Asal" type="text" placeholder="Contoh: TK ..." />
+            </div>
+          </div>
+
+          <div id="mutationStep" class="mutation-panel step-hidden" aria-live="polite">
+            <div class="mutation-panel-head">
+              <h3>Data Murid Mutasi</h3>
+              <p>Isi bagian ini hanya untuk murid pindahan dari sekolah lain.</p>
+            </div>
+
+            <div class="grid two">
+              <div class="field required">
+                <label for="mutasiNama">Nama Lengkap Murid Mutasi</label>
+                <input id="mutasiNama" name="Mutasi - Nama Lengkap" type="text" placeholder="Contoh: Rani Lestari" />
+              </div>
+              <div class="field required">
+                <label for="mutasiNisn">NISN Murid Mutasi</label>
+                <input id="mutasiNisn" name="Mutasi - NISN Murid" type="text" inputmode="numeric" maxlength="10" placeholder="10 digit NISN" />
+              </div>
+            </div>
+
+            <div class="field required">
+              <label for="sekolahAsalLengkap">Nama Sekolah Asal Lengkap</label>
+              <input id="sekolahAsalLengkap" name="Mutasi - Sekolah Asal Lengkap" type="text" placeholder="Contoh: SD Negeri ..." />
+            </div>
+
+            <div class="grid three">
+              <div class="field required">
+                <label for="kabupatenAsal">Kabupaten/Kota Sekolah Asal</label>
+                <input id="kabupatenAsal" name="Mutasi - Kabupaten Sekolah Asal" type="text" placeholder="Contoh: Maluku Tengah" />
+              </div>
+              <div class="field required">
+                <label for="kecamatanAsal">Kecamatan Sekolah Asal</label>
+                <input id="kecamatanAsal" name="Mutasi - Kecamatan Sekolah Asal" type="text" placeholder="Contoh: Salahutu" />
+              </div>
+              <div class="field required">
+                <label for="npsnAsal">NPSN Sekolah Asal</label>
+                <input id="npsnAsal" name="Mutasi - NPSN Sekolah Asal" type="text" inputmode="numeric" maxlength="8" placeholder="8 digit NPSN" />
+                <small>Diisi 8 digit angka.</small>
+              </div>
             </div>
           </div>
         </fieldset>
@@ -264,7 +331,7 @@
             <h3>Periksa kembali data sebelum dikirim</h3>
             <p>
               Setelah menekan tombol kirim, data akan masuk ke Google Sheet sekolah untuk diverifikasi oleh operator.
-              Pastikan NIK, No KK, nama murid, dan nomor HP sudah benar.
+              Pastikan jenis pendaftaran, NIK, No KK, nama murid, NISN, dan nomor HP sudah benar.
             </p>
           </div>
           <label class="checkline">
@@ -277,7 +344,7 @@
         <div class="button-row">
           <button type="button" id="prevBtn" class="btn secondary">Kembali</button>
           <button type="button" id="nextBtn" class="btn primary">Lanjut</button>
-          <button type="submit" id="submitBtn" class="btn success">Kirim Pendaftaran</button>
+          <button type="button" id="submitBtn" class="btn success">Kirim Pendaftaran</button>
         </div>
       </form>
 
@@ -295,7 +362,7 @@
         Terima kasih. Data pendaftaran telah dikirim ke sekolah.
         Silakan menunggu informasi verifikasi dari operator sekolah.
       </p>
-      <button id="newEntryBtn" class="btn primary">Isi Data Baru</button>
+      <button id="newEntryBtn" class="btn primary">Isi Data Lagi</button>
     </div>
   </div>
 
