@@ -276,7 +276,7 @@ async function sendFormData() {
   if (!validateAllSteps()) return;
 
   if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_URL")) {
-    showToast("URL Web App Google Apps Script belum dipasang di script.js.", "error");
+    showToast("URL Web App Google Apps Script SD Negeri 27 belum dipasang di script.js.", "error");
     return;
   }
 
