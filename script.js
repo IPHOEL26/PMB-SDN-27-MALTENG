@@ -3,7 +3,7 @@
 // 1. Deploy Code.gs sebagai Web App.
 // 2. Salin URL Web App ke variabel WEB_APP_URL di bawah ini.
 // ============================================================
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyouVQOkDP0wMBY797HEj4kM1oe0NCCEl09pKhw_4r8TnP9zZEXFFQmyfFSExUQ8-2gJA/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzMzSv0HPrWYPKQxUE6Z5qC8j8zifepM0eS3u6HPvBVi0t17J2xNdImi0RVN10dkkKs/exec";
 
 const form = document.getElementById("pmbForm");
 const allSteps = Array.from(document.querySelectorAll(".step"));
@@ -276,7 +276,7 @@ async function sendFormData() {
   if (!validateAllSteps()) return;
 
   if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_URL")) {
-    showToast("URL Web App Google Apps Script SD Negeri 27 belum dipasang di script.js.", "error");
+    showToast("URL Web App Google Apps Script belum dipasang di script.js.", "error");
     return;
   }
 
