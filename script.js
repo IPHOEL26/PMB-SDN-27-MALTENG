@@ -3,7 +3,7 @@
 // 1. Deploy Code.gs sebagai Web App.
 // 2. Salin URL Web App ke variabel WEB_APP_URL di bawah ini.
 // ============================================================
-const WEB_APP_URL = "https://script.google.com/a/macros/admin.sd.belajar.id/s/AKfycbyouVQOkDP0wMBY797HEj4kM1oe0NCCEl09pKhw_4r8TnP9zZEXFFQmyfFSExUQ8-2gJA/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyouVQOkDP0wMBY797HEj4kM1oe0NCCEl09pKhw_4r8TnP9zZEXFFQmyfFSExUQ8-2gJA/exec"";
 
 const form = document.getElementById("pmbForm");
 const steps = Array.from(document.querySelectorAll(".step"));
