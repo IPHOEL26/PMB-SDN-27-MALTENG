@@ -71,7 +71,7 @@ body::before {
   justify-content: center;
 }
 .hero-card::after {
-  content: "SD 16";
+  content: "SD 27";
   position: absolute;
   right: -26px;
   bottom: 10px;
@@ -338,7 +338,7 @@ small { color: var(--muted); font-size: 12px; }
 }
 
 /* Revisi fitur pilihan Murid Baru / Murid Mutasi */
-.hero-card::after { content: "SD 16"; }
+.hero-card::after { content: "SD 27"; }
 .is-hidden { display: none !important; }
 .type-selector {
   padding: 4px 0 2px;
