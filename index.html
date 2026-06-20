@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aplikasi Pendaftaran Murid Baru SD Negeri 27 Maluku Tengah Tahun Pelajaran 2026-2027" />
+  <title>Pendaftaran Murid Baru SD Negeri 27 Maluku Tengah</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card">
+      <div class="hero-badge">PMB 2026-2027</div>
+      <h1>Pendaftaran Murid Baru</h1>
+      <h2>SD Negeri 27 Maluku Tengah</h2>
+      <p>
+        Silakan isi data dengan benar sesuai dokumen resmi seperti Kartu Keluarga,
+        Akta Kelahiran, KIP/KKS, dan dokumen pendukung lainnya.
+      </p>
+      <div class="hero-info">
+        <span>✓ Ramah HP</span>
+        <span>✓ Data langsung masuk Google Sheet</span>
+        <span>✓ Aman untuk verifikasi sekolah</span>
+      </div>
+    </section>
+
+    <section class="form-card">
+      <div class="progress-wrap">
+        <div class="progress-top">
+          <span id="stepLabel">Langkah 1 dari 7</span>
+          <span id="percentLabel">14%</span>
+        </div>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+      </div>
+
+      <form id="pmbForm" method="POST" target="submitFrame" autocomplete="on">
+        <input type="hidden" name="Sumber Form" value="GitHub Pages - PMB SD Negeri 27 Maluku Tengah" />
+
+        <!-- LANGKAH 1 -->
+        <fieldset class="step active" data-title="Data Murid">
+          <legend>Data Murid</legend>
+          <p class="section-note">Isi identitas murid sesuai dokumen resmi.</p>
+
+          <div class="grid two">
+            <div class="field required">
+              <label for="nama">Nama Murid</label>
+              <input id="nama" name="Nama" type="text" placeholder="Contoh: Rani Lestari" required />
+            </div>
+            <div class="field">
+              <label for="nipd">NIPD</label>
+              <input id="nipd" name="NIPD" type="text" placeholder="Diisi operator jika belum ada" />
+            </div>
+          </div>
+
+          <div class="grid three">
+            <div class="field required">
+              <label for="jk">Jenis Kelamin</label>
+              <select id="jk" name="JK" required>
+                <option value="">Pilih</option>
+                <option value="L">Laki-laki</option>
+                <option value="P">Perempuan</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="nisn">NISN</label>
+              <input id="nisn" name="NISN" type="text" inputmode="numeric" maxlength="10" placeholder="Jika sudah ada" />
+            </div>
+            <div class="field required">
+              <label for="nik">NIK Murid</label>
+              <input id="nik" name="NIK" type="text" inputmode="numeric" maxlength="16" placeholder="16 digit" required />
+              <small>Harus 16 digit angka.</small>
+            </div>
+          </div>
+
+          <div class="grid three">
+            <div class="field required">
+              <label for="tempatLahir">Tempat Lahir</label>
+              <input id="tempatLahir" name="Tempat Lahir" type="text" placeholder="Contoh: Ambon" required />
+            </div>
+            <div class="field required">
+              <label for="tanggalLahir">Tanggal Lahir</label>
+              <input id="tanggalLahir" name="Tanggal Lahir" type="date" required />
+            </div>
+            <div class="field required">
+              <label for="agama">Agama</label>
+              <select id="agama" name="Agama" required>
+                <option value="">Pilih</option>
+                <option>Islam</option>
+                <option>Kristen</option>
+                <option>Katolik</option>
+                <option>Hindu</option>
+                <option>Buddha</option>
+                <option>Konghucu</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="field">
+              <label for="kebutuhanKhusus">Kebutuhan Khusus</label>
+              <input id="kebutuhanKhusus" name="Kebutuhan Khusus" type="text" placeholder="Jika tidak ada, kosongkan" />
+            </div>
+            <div class="field">
+              <label for="sekolahAsal">Sekolah Asal / TK / PAUD</label>
+              <input id="sekolahAsal" name="Sekolah Asal" type="text" placeholder="Contoh: TK ..." />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- LANGKAH 2 -->
+        <fieldset class="step" data-title="Alamat & Kontak">
+          <legend>Alamat dan Kontak</legend>
+          <p class="section-note">Isi alamat tempat tinggal murid saat ini.</p>
+
+          <div class="field required">
+            <label for="alamat">Alamat Lengkap</label>
+            <textarea id="alamat" name="Alamat" rows="3" placeholder="Jalan, lingkungan, atau keterangan rumah" required></textarea>
+          </div>
+
+          <div class="grid four">
+            <div class="field"><label for="rt">RT</label><input id="rt" name="RT" type="text" placeholder="000" /></div>
+            <div class="field"><label for="rw">RW</label><input id="rw" name="RW" type="text" placeholder="000" /></div>
+            <div class="field"><label for="dusun">Dusun</label><input id="dusun" name="Dusun" type="text" /></div>
+            <div class="field"><label for="kodePos">Kode Pos</label><input id="kodePos" name="Kode Pos" type="text" inputmode="numeric" maxlength="5" /></div>
+          </div>
+
+          <div class="grid two">
+            <div class="field required"><label for="kelurahan">Kelurahan/Desa</label><input id="kelurahan" name="Kelurahan" type="text" required /></div>
+            <div class="field required"><label for="kecamatan">Kecamatan</label><input id="kecamatan" name="Kecamatan" type="text" required /></div>
+          </div>
+
+          <div class="grid two">
+            <div class="field"><label for="jenisTinggal">Jenis Tinggal</label>
+              <select id="jenisTinggal" name="Jenis Tinggal">
+                <option value="">Pilih</option><option>Bersama orang tua</option><option>Bersama wali</option><option>Kost</option><option>Asrama</option><option>Lainnya</option>
+              </select>
+            </div>
+            <div class="field"><label for="transportasi">Alat Transportasi</label>
+              <select id="transportasi" name="Alat Transportasi">
+                <option value="">Pilih</option><option>Jalan kaki</option><option>Sepeda</option><option>Sepeda motor</option><option>Angkutan umum</option><option>Perahu</option><option>Lainnya</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid three">
+            <div class="field"><label for="telepon">Telepon</label><input id="telepon" name="Telepon" type="tel" /></div>
+            <div class="field required"><label for="hp">HP Orang Tua/Wali</label><input id="hp" name="HP" type="tel" inputmode="numeric" placeholder="08xxxxxxxxxx" required /></div>
+            <div class="field"><label for="email">E-Mail</label><input id="email" name="E-Mail" type="email" placeholder="opsional" /></div>
+          </div>
+        </fieldset>
+
+        <!-- LANGKAH 3 -->
+        <fieldset class="step" data-title="Data Ayah & Ibu">
+          <legend>Data Ayah dan Ibu</legend>
+          <p class="section-note">Isi data ayah dan ibu sesuai Kartu Keluarga.</p>
+
+          <h3>Data Ayah</h3>
+          <div class="grid three">
+            <div class="field"><label for="ayahNama">Nama Ayah</label><input id="ayahNama" name="Data Ayah - Nama" type="text" /></div>
+            <div class="field"><label for="ayahTahun">Tahun Lahir Ayah</label><input id="ayahTahun" name="Data Ayah - Tahun Lahir" type="number" min="1900" max="2026" /></div>
+            <div class="field"><label for="ayahNik">NIK Ayah</label><input id="ayahNik" name="Data Ayah - NIK" type="text" inputmode="numeric" maxlength="16" /></div>
+          </div>
+          <div class="grid three">
+            <div class="field"><label for="ayahPendidikan">Jenjang Pendidikan Ayah</label><input id="ayahPendidikan" name="Data Ayah - Jenjang Pendidikan" type="text" placeholder="SD/SMP/SMA/S1" /></div>
+            <div class="field"><label for="ayahPekerjaan">Pekerjaan Ayah</label><input id="ayahPekerjaan" name="Data Ayah - Pekerjaan" type="text" /></div>
+            <div class="field"><label for="ayahPenghasilan">Penghasilan Ayah</label><input id="ayahPenghasilan" name="Data Ayah - Penghasilan" type="text" placeholder="Contoh: Rp1.000.000" /></div>
+          </div>
+
+          <h3>Data Ibu</h3>
+          <div class="grid three">
+            <div class="field"><label for="ibuNama">Nama Ibu</label><input id="ibuNama" name="Data Ibu - Nama" type="text" /></div>
+            <div class="field"><label for="ibuTahun">Tahun Lahir Ibu</label><input id="ibuTahun" name="Data Ibu - Tahun Lahir" type="number" min="1900" max="2026" /></div>
+            <div class="field"><label for="ibuNik">NIK Ibu</label><input id="ibuNik" name="Data Ibu - NIK" type="text" inputmode="numeric" maxlength="16" /></div>
+          </div>
+          <div class="grid three">
+            <div class="field"><label for="ibuPendidikan">Jenjang Pendidikan Ibu</label><input id="ibuPendidikan" name="Data Ibu - Jenjang Pendidikan" type="text" placeholder="SD/SMP/SMA/S1" /></div>
+            <div class="field"><label for="ibuPekerjaan">Pekerjaan Ibu</label><input id="ibuPekerjaan" name="Data Ibu - Pekerjaan" type="text" /></div>
+            <div class="field"><label for="ibuPenghasilan">Penghasilan Ibu</label><input id="ibuPenghasilan" name="Data Ibu - Penghasilan" type="text" placeholder="Contoh: Rp1.000.000" /></div>
+          </div>
+        </fieldset>
+
+        <!-- LANGKAH 4 -->
+        <fieldset class="step" data-title="Data Wali">
+          <legend>Data Wali</legend>
+          <p class="section-note">Diisi jika murid tinggal atau diasuh oleh wali. Jika tidak ada, boleh dikosongkan.</p>
+          <div class="grid three">
+            <div class="field"><label for="waliNama">Nama Wali</label><input id="waliNama" name="Data Wali - Nama" type="text" /></div>
+            <div class="field"><label for="waliTahun">Tahun Lahir Wali</label><input id="waliTahun" name="Data Wali - Tahun Lahir" type="number" min="1900" max="2026" /></div>
+            <div class="field"><label for="waliNik">NIK Wali</label><input id="waliNik" name="Data Wali - NIK" type="text" inputmode="numeric" maxlength="16" /></div>
+          </div>
+          <div class="grid three">
+            <div class="field"><label for="waliPendidikan">Jenjang Pendidikan Wali</label><input id="waliPendidikan" name="Data Wali - Jenjang Pendidikan" type="text" /></div>
+            <div class="field"><label for="waliPekerjaan">Pekerjaan Wali</label><input id="waliPekerjaan" name="Data Wali - Pekerjaan" type="text" /></div>
+            <div class="field"><label for="waliPenghasilan">Penghasilan Wali</label><input id="waliPenghasilan" name="Data Wali - Penghasilan" type="text" /></div>
+          </div>
+        </fieldset>
+
+        <!-- LANGKAH 5 -->
+        <fieldset class="step" data-title="Bantuan Sosial">
+          <legend>Data Bantuan dan Rekening</legend>
+          <p class="section-note">Isi hanya jika memiliki KPS, KIP, KKS, atau rekening bank.</p>
+
+          <div class="grid three">
+            <div class="field"><label for="penerimaKps">Penerima KPS</label><select id="penerimaKps" name="Penerima KPS"><option value="">Pilih</option><option>Ya</option><option>Tidak</option></select></div>
+            <div class="field"><label for="noKps">No. KPS</label><input id="noKps" name="No. KPS" type="text" /></div>
+            <div class="field"><label for="penerimaKip">Penerima KIP</label><select id="penerimaKip" name="Penerima KIP"><option value="">Pilih</option><option>Ya</option><option>Tidak</option></select></div>
+          </div>
+
+          <div class="grid three">
+            <div class="field"><label for="nomorKip">Nomor KIP</label><input id="nomorKip" name="Nomor KIP" type="text" /></div>
+            <div class="field"><label for="namaKip">Nama di KIP</label><input id="namaKip" name="Nama di KIP" type="text" /></div>
+            <div class="field"><label for="nomorKks">Nomor KKS</label><input id="nomorKks" name="Nomor KKS" type="text" /></div>
+          </div>
+
+          <div class="grid three">
+            <div class="field"><label for="bank">Bank</label><input id="bank" name="Bank" type="text" placeholder="Contoh: BRI/BNI/Bank Maluku" /></div>
+            <div class="field"><label for="rekening">Nomor Rekening Bank</label><input id="rekening" name="Nomor Rekening Bank" type="text" inputmode="numeric" /></div>
+            <div class="field"><label for="rekeningNama">Rekening Atas Nama</label><input id="rekeningNama" name="Rekening Atas Nama" type="text" /></div>
+          </div>
+
+          <div class="grid two">
+            <div class="field"><label for="layakPip">Layak PIP (usulan dari sekolah)</label><select id="layakPip" name="Layak PIP (usulan dari sekolah)"><option value="">Pilih</option><option>Ya</option><option>Tidak</option></select></div>
+            <div class="field"><label for="alasanPip">Alasan Layak PIP</label><input id="alasanPip" name="Alasan Layak PIP" type="text" placeholder="Contoh: keluarga kurang mampu" /></div>
+          </div>
+        </fieldset>
+
+        <!-- LANGKAH 6 -->
+        <fieldset class="step" data-title="Data Tambahan">
+          <legend>Data Tambahan</legend>
+          <p class="section-note">Data ini membantu sekolah melengkapi administrasi murid.</p>
+
+          <div class="grid three">
+            <div class="field"><label for="skhun">SKHUN</label><input id="skhun" name="SKHUN" type="text" /></div>
+            <div class="field"><label for="rombel">Rombel Saat Ini</label><input id="rombel" name="Rombel Saat Ini" type="text" placeholder="Diisi operator jika belum ada" /></div>
+            <div class="field"><label for="noUn">No Peserta Ujian Nasional</label><input id="noUn" name="No Peserta Ujian Nasional" type="text" /></div>
+          </div>
+
+          <div class="grid three">
+            <div class="field"><label for="seriIjazah">No Seri Ijazah</label><input id="seriIjazah" name="No Seri Ijazah" type="text" /></div>
+            <div class="field"><label for="akta">No Registrasi Akta Lahir</label><input id="akta" name="No Registrasi Akta Lahir" type="text" /></div>
+            <div class="field required"><label for="noKk">No KK</label><input id="noKk" name="No KK" type="text" inputmode="numeric" maxlength="16" placeholder="16 digit" required /></div>
+          </div>
+
+          <div class="grid four">
+            <div class="field"><label for="anakKe">Anak ke-berapa</label><input id="anakKe" name="Anak ke-berapa" type="number" min="1" /></div>
+            <div class="field"><label for="bb">Berat Badan</label><input id="bb" name="Berat Badan" type="number" min="1" step="0.1" placeholder="kg" /></div>
+            <div class="field"><label for="tb">Tinggi Badan</label><input id="tb" name="Tinggi Badan" type="number" min="1" step="0.1" placeholder="cm" /></div>
+            <div class="field"><label for="lk">Lingkar Kepala</label><input id="lk" name="Lingkar Kepala" type="number" min="1" step="0.1" placeholder="cm" /></div>
+          </div>
+
+          <div class="grid four">
+            <div class="field"><label for="saudara">Jml. Saudara Kandung</label><input id="saudara" name="Jml. Saudara Kandung" type="number" min="0" /></div>
+            <div class="field"><label for="jarak">Jarak Rumah ke Sekolah (KM)</label><input id="jarak" name="Jarak Rumah ke Sekolah (KM)" type="number" min="0" step="0.1" /></div>
+            <div class="field"><label for="lintang">Lintang</label><input id="lintang" name="Lintang" type="text" placeholder="opsional" /></div>
+            <div class="field"><label for="bujur">Bujur</label><input id="bujur" name="Bujur" type="text" placeholder="opsional" /></div>
+          </div>
+        </fieldset>
+
+        <!-- LANGKAH 7 -->
+        <fieldset class="step" data-title="Konfirmasi">
+          <legend>Konfirmasi Data</legend>
+          <div class="confirm-box">
+            <h3>Periksa kembali data sebelum dikirim</h3>
+            <p>
+              Setelah menekan tombol kirim, data akan masuk ke Google Sheet sekolah untuk diverifikasi oleh operator.
+              Pastikan NIK, No KK, nama murid, dan nomor HP sudah benar.
+            </p>
+          </div>
+          <label class="checkline">
+            <input id="persetujuan" type="checkbox" required />
+            <span>Saya menyatakan bahwa data yang diisi benar dan bersedia melengkapi berkas fisik sesuai ketentuan sekolah.</span>
+          </label>
+          <div id="summaryBox" class="summary-box"></div>
+        </fieldset>
+
+        <div class="button-row">
+          <button type="button" id="prevBtn" class="btn secondary">Kembali</button>
+          <button type="button" id="nextBtn" class="btn primary">Lanjut</button>
+          <button type="submit" id="submitBtn" class="btn success">Kirim Pendaftaran</button>
+        </div>
+      </form>
+
+      <iframe name="submitFrame" id="submitFrame" title="Submit Frame" hidden></iframe>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="successModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-icon">✓</div>
+      <h2>Data berhasil dikirim</h2>
+      <p>
+        Terima kasih. Data pendaftaran telah dikirim ke sekolah.
+        Silakan menunggu informasi verifikasi dari operator sekolah.
+      </p>
+      <button id="newEntryBtn" class="btn primary">Isi Data Baru</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
